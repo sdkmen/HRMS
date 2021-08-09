@@ -10,20 +10,20 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="job_positions")
-public class JobPosition {
+@Table(name="job_titles")
+public class JobTitle {
 	
 	@Id
 	@GeneratedValue
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="job_position_name")
+	@Column(name="title")
 	private String jobTitle;
 	
-	public JobPosition() {}
+	public JobTitle() {}
 
-	public JobPosition(int id, String jobTitle) {
+	public JobTitle(int id, String jobTitle) {
 		super();
 		this.id = id;
 		this.jobTitle = jobTitle;
