@@ -4,9 +4,9 @@ import java.util.List;
 
 import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
-import kodlamaio.Hrms.entities.concretes.JobTitle;
+import kodlamaio.Hrms.entities.concretes.Candidate;
 
-public interface JobTitleService {
-	DataResult<List<JobTitle>> getAllTitle();
-	Result add(JobTitle jobTitle);
+public interface CandidateService {
+	Result add(Candidate candidate);
+	DataResult<List<Candidate>> getAll();
 }
