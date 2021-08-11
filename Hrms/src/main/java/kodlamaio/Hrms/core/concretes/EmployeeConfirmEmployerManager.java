@@ -8,7 +8,7 @@ import kodlamaio.Hrms.core.abstracts.EmployeeConfirmEmployerService;
 public class EmployeeConfirmEmployerManager implements EmployeeConfirmEmployerService{
 
 	@Override
-	public boolean confirmEmployer() {
+	public boolean isConfirmedEmployer() {
 		return true;
 	}
 
