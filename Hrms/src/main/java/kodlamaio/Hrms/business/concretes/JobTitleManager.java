@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.Hrms.business.abstracts.JobTitleService;
 import kodlamaio.Hrms.core.utilities.results.DataResult;
+import kodlamaio.Hrms.core.utilities.results.ErrorResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.Hrms.core.utilities.results.SuccessResult;
@@ -31,6 +32,9 @@ public class JobTitleManager implements JobTitleService{
 
 	@Override
 	public Result add(JobTitle jobTitle) {
+		if(this.jobPositionDao.findByJobTitle(jobTitle.getJobTitle()) != null) {
+			return new ErrorResult("Bu pozisyon zaten mevcut.");
+		}
 		this.jobPositionDao.save(jobTitle);
 		return new SuccessResult("Is pozisyonu eklendi.");
 	}
