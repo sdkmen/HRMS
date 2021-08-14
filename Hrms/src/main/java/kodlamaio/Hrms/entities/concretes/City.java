@@ -28,4 +28,6 @@ public class City {
 	@Column(name="city_name")
 	private String city_name;
 	
+	@OneToMany(mappedBy = "city")
+	private List<JobAdvert> jobAdverts;
 }

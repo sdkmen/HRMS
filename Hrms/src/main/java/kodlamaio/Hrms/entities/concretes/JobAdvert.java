@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,5 +47,15 @@ public class JobAdvert {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date deadline;
 	
+	@ManyToOne()
+	@JoinColumn(name="city_id")
+	private City city;
 	
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	private Employer employer;
+	
+	@ManyToOne()
+	@JoinColumn(name="job_title_id")
+	private JobTitle jobTitle;
 }
