@@ -8,5 +8,8 @@ import kodlamaio.Hrms.entities.concretes.JobAdvert;
 
 public interface JobAdvertService {
 	Result add(JobAdvert jobAdvert);
-	DataResult<List<JobAdvert>> getByIsActive(Boolean isActive);
+	Result setIsActiveToPassive(int id);
+	DataResult<List<JobAdvert>> getByIsActive();
+	DataResult<List<JobAdvert>> getAllSortedByDate();
+	DataResult<List<JobAdvert>> getByIsActiveOrderByEmployer(int employerId);
 }

@@ -3,6 +3,7 @@ package kodlamaio.Hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
@@ -31,9 +32,26 @@ public class JobAdvertManager implements JobAdvertService{
 	}
 
 	@Override
-	public DataResult<List<JobAdvert>> getByIsActive(Boolean isActive) {
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByIsActive(isActive),"Aktif is ilanlari listelendi.");
+	public DataResult<List<JobAdvert>> getByIsActive() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByIsActive(),"Aktif is ilanlari listelendi.");
 	}
 
+	@Override
+	public DataResult<List<JobAdvert>> getAllSortedByDate() {
+		Sort sort = Sort.by(Sort.Direction.ASC,"deadline");
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(sort),"Tarihe gore siralandi.");
+	}
 
+	@Override
+	public DataResult<List<JobAdvert>> getByIsActiveOrderByEmployer(int employerId) {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByIsActiveOrderByEmployer(employerId),"Is verene gore aktif ilanlar siralandi.");
+	}
+
+	@Override
+	public Result setIsActiveToPassive(int id) {
+		JobAdvert jobAdvertisementId = this.jobAdvertDao.getById(id);
+		jobAdvertisementId.setIsActive(false);
+		this.jobAdvertDao.save(jobAdvertisementId);
+		return new SuccessResult("Is ilani pasif yapildi.");
+	}
 }
