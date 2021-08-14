@@ -42,6 +42,9 @@ public class JobAdvert {
 	@Column(name="free_position_no")
 	private int freePositionNo;
 	
+	@Column(name="is_active")
+	private Boolean isActive;
+	
 	@Column(name="deadline")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
