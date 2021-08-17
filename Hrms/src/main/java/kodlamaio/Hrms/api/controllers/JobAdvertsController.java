@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
@@ -32,22 +31,22 @@ public class JobAdvertsController {
 		return this.jobAdvertService.add(jobAdvert);
 	}
 	
-	@GetMapping("/isactive")
+	@GetMapping("/getByIsActive")
 	public DataResult<List<JobAdvert>> getByIsActive() {
 		return this.jobAdvertService.getByIsActive();
 	}
 	
-	@GetMapping("/getallsortedbydata")
+	@GetMapping("/getAllSortedByData")
 	public DataResult<List<JobAdvert>> getAllSortedByDate(){
 		return this.jobAdvertService.getAllSortedByDate();
 	}
 	
-	@GetMapping("/getbyisactiveorderemployer")
+	@GetMapping("/getByIsActiveOrderEmployer")
 	public DataResult<List<JobAdvert>> getByIsActiveOrderByEmployer(int employerId) {
 		return this.jobAdvertService.getByIsActiveOrderByEmployer(employerId);
 	}
 	
-	@PostMapping("/setisactivetopassive/{id}")
+	@PostMapping("/setIsActiveToPassive/{id}")
 	public Result setIsActiveToPassive(@PathVariable int id) {
 		return this.jobAdvertService.setIsActiveToPassive(id);
 	}

@@ -38,7 +38,7 @@ public class JobAdvertManager implements JobAdvertService{
 
 	@Override
 	public DataResult<List<JobAdvert>> getAllSortedByDate() {
-		Sort sort = Sort.by(Sort.Direction.ASC,"deadline");
+		Sort sort = Sort.by(Sort.Direction.ASC,"creationDate");
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(sort),"Tarihe gore siralandi.");
 	}
 
