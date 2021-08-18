@@ -3,6 +3,7 @@ package kodlamaio.Hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
-import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.entities.concretes.JobAdvert;
+import kodlamaio.Hrms.entities.dtos.JobAdvertDto;
 
 @RestController
 @RequestMapping("/api/jobadverts")
@@ -32,18 +33,18 @@ public class JobAdvertsController {
 	}
 	
 	@GetMapping("/getByIsActive")
-	public DataResult<List<JobAdvert>> getByIsActive() {
-		return this.jobAdvertService.getByIsActive();
+	public ResponseEntity<List<JobAdvertDto>> getByIsActive() {
+		return ResponseEntity.ok(jobAdvertService.getByIsActive());
 	}
 	
-	@GetMapping("/getAllSortedByData")
-	public DataResult<List<JobAdvert>> getAllSortedByDate(){
-		return this.jobAdvertService.getAllSortedByDate();
+	@GetMapping("/getAllActiveSortedByDate")
+	public ResponseEntity<List<JobAdvertDto>> getAllActiveSortedByDate(){ 
+		return ResponseEntity.ok(jobAdvertService.getAllActiveSortedByDate());
 	}
 	
 	@GetMapping("/getByIsActiveOrderEmployer")
-	public DataResult<List<JobAdvert>> getByIsActiveOrderByEmployer(int employerId) {
-		return this.jobAdvertService.getByIsActiveOrderByEmployer(employerId);
+	public ResponseEntity<List<JobAdvertDto>> getByIsActiveOrderByEmployer(int employerId) {
+		return ResponseEntity.ok(jobAdvertService.getByIsActiveOrderByEmployer(employerId));
 	}
 	
 	@PostMapping("/setIsActiveToPassive/{id}")

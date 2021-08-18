@@ -1,28 +1,33 @@
 package kodlamaio.Hrms.business.concretes;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
-import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
-import kodlamaio.Hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.Hrms.core.utilities.results.SuccessResult;
 import kodlamaio.Hrms.dataAccess.abstracts.JobAdvertDao;
 import kodlamaio.Hrms.entities.concretes.JobAdvert;
+import kodlamaio.Hrms.entities.dtos.JobAdvertDto;
 
 @Service
 public class JobAdvertManager implements JobAdvertService{
 	
 	private JobAdvertDao jobAdvertDao;
+	private ModelMapper modelMapper;
+	private List<JobAdvert> jobAdverts;
+	private List<JobAdvertDto> dtos;
 	
 	@Autowired
-	public JobAdvertManager(JobAdvertDao jobAdvertDao) {
+	public JobAdvertManager(JobAdvertDao jobAdvertDao, ModelMapper modelMapper) {
 		super();
 		this.jobAdvertDao = jobAdvertDao;
+		this.modelMapper = modelMapper;
 	}
 
 	@Override
@@ -32,19 +37,25 @@ public class JobAdvertManager implements JobAdvertService{
 	}
 
 	@Override
-	public DataResult<List<JobAdvert>> getByIsActive() {
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByIsActive(),"Aktif is ilanlari listelendi.");
+	public List<JobAdvertDto> getByIsActive() {
+		jobAdverts = jobAdvertDao.getByIsActive();
+		dtos = jobAdverts.stream().map(jobAdvert -> modelMapper.map(jobAdvert, JobAdvertDto.class)).collect(Collectors.toList());
+		return dtos;
 	}
 
 	@Override
-	public DataResult<List<JobAdvert>> getAllSortedByDate() {
+	public List<JobAdvertDto> getAllActiveSortedByDate() {
 		Sort sort = Sort.by(Sort.Direction.ASC,"creationDate");
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(sort),"Tarihe gore siralandi.");
+		jobAdverts = jobAdvertDao.getAllActiveSortedByDate(sort);
+		dtos = jobAdverts.stream().map(jobAdvert -> modelMapper.map(jobAdvert, JobAdvertDto.class)).collect(Collectors.toList());
+		return dtos;
 	}
 
 	@Override
-	public DataResult<List<JobAdvert>> getByIsActiveOrderByEmployer(int employerId) {
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByIsActiveOrderByEmployer(employerId),"Is verene gore aktif ilanlar siralandi.");
+	public List<JobAdvertDto> getByIsActiveOrderByEmployer(int employerId) {
+		jobAdverts = jobAdvertDao.getByIsActiveOrderByEmployer(employerId);
+		dtos = jobAdverts.stream().map(jobAdvert -> modelMapper.map(jobAdvert, JobAdvertDto.class)).collect(Collectors.toList());
+		return dtos;
 	}
 
 	@Override
