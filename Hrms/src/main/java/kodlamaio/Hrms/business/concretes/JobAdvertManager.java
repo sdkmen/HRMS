@@ -1,61 +1,57 @@
 package kodlamaio.Hrms.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
+import kodlamaio.Hrms.core.utilities.dtoConverter.abstracts.DtoConverterService;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.core.utilities.results.SuccessResult;
 import kodlamaio.Hrms.dataAccess.abstracts.JobAdvertDao;
 import kodlamaio.Hrms.entities.concretes.JobAdvert;
+import kodlamaio.Hrms.entities.dtos.JobAdvertAddDto;
 import kodlamaio.Hrms.entities.dtos.JobAdvertDto;
 
 @Service
 public class JobAdvertManager implements JobAdvertService{
 	
 	private JobAdvertDao jobAdvertDao;
-	private ModelMapper modelMapper;
-	private List<JobAdvert> jobAdverts;
-	private List<JobAdvertDto> dtos;
+	private DtoConverterService dtoConverterService;
 	
 	@Autowired
-	public JobAdvertManager(JobAdvertDao jobAdvertDao, ModelMapper modelMapper) {
+	public JobAdvertManager(JobAdvertDao jobAdvertDao, DtoConverterService dtoConverterService) {
 		super();
 		this.jobAdvertDao = jobAdvertDao;
-		this.modelMapper = modelMapper;
+		this.dtoConverterService = dtoConverterService;
 	}
 
 	@Override
-	public Result add(JobAdvert jobAdvert) {
-		this.jobAdvertDao.save(jobAdvert);
+	public Result add(JobAdvertAddDto jobAdvertAddDto) {
+		jobAdvertAddDto.setCreationDate(LocalDate.now());
+		JobAdvert jobAdvert = (JobAdvert) dtoConverterService.dtoToEntity(jobAdvertAddDto, JobAdvert.class);
+		jobAdvert.setId(jobAdvertAddDto.getId());
+		jobAdvertDao.save(jobAdvert);
 		return new SuccessResult("Is ilani eklendi");
 	}
 
 	@Override
 	public List<JobAdvertDto> getByIsActive() {
-		jobAdverts = jobAdvertDao.getByIsActive();
-		dtos = jobAdverts.stream().map(jobAdvert -> modelMapper.map(jobAdvert, JobAdvertDto.class)).collect(Collectors.toList());
-		return dtos;
+		return dtoConverterService.entityToDto(jobAdvertDao.getByIsActive(), JobAdvertDto.class);
 	}
 
 	@Override
 	public List<JobAdvertDto> getAllActiveSortedByDate() {
 		Sort sort = Sort.by(Sort.Direction.ASC,"creationDate");
-		jobAdverts = jobAdvertDao.getAllActiveSortedByDate(sort);
-		dtos = jobAdverts.stream().map(jobAdvert -> modelMapper.map(jobAdvert, JobAdvertDto.class)).collect(Collectors.toList());
-		return dtos;
+		return dtoConverterService.entityToDto(jobAdvertDao.getAllActiveSortedByDate(sort), JobAdvertDto.class);
 	}
 
 	@Override
 	public List<JobAdvertDto> getByIsActiveOrderByEmployer(int employerId) {
-		jobAdverts = jobAdvertDao.getByIsActiveOrderByEmployer(employerId);
-		dtos = jobAdverts.stream().map(jobAdvert -> modelMapper.map(jobAdvert, JobAdvertDto.class)).collect(Collectors.toList());
-		return dtos;
+		return dtoConverterService.entityToDto(jobAdvertDao.getByIsActiveOrderByEmployer(employerId), JobAdvertDto.class);
 	}
 
 	@Override

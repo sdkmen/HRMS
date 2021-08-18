@@ -1,5 +1,6 @@
 package kodlamaio.Hrms.entities.concretes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,9 +49,8 @@ public class JobAdvert {
 	private Boolean isActive;
 	
 	@Column(name="creation_date")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date creationDate;
+	@JsonIgnore
+	private LocalDate creationDate;
 	
 	@Column(name="deadline")
 	@Temporal(TemporalType.DATE)

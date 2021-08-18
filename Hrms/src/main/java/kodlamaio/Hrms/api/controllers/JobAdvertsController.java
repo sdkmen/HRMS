@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
 import kodlamaio.Hrms.core.utilities.results.Result;
-import kodlamaio.Hrms.entities.concretes.JobAdvert;
+import kodlamaio.Hrms.entities.dtos.JobAdvertAddDto;
 import kodlamaio.Hrms.entities.dtos.JobAdvertDto;
 
 @RestController
@@ -28,8 +28,8 @@ public class JobAdvertsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobAdvert jobAdvert) {
-		return this.jobAdvertService.add(jobAdvert);
+	public Result add(@RequestBody JobAdvertAddDto jobAdvertAddDto) {
+		return this.jobAdvertService.add(jobAdvertAddDto);
 	}
 	
 	@GetMapping("/getByIsActive")
