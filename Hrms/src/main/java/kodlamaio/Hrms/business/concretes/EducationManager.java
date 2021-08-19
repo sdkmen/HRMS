@@ -7,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.Hrms.business.abstracts.EducationService;
-import kodlamaio.Hrms.core.utilities.StringExtensions;
 import kodlamaio.Hrms.core.utilities.dtoConverter.abstracts.DtoConverterService;
 import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.ErrorResult;

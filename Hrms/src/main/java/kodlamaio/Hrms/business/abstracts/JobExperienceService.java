@@ -1,5 +1,13 @@
 package kodlamaio.Hrms.business.abstracts;
 
-public interface JobExperienceService {
+import java.util.List;
 
+import kodlamaio.Hrms.core.utilities.results.DataResult;
+import kodlamaio.Hrms.core.utilities.results.Result;
+import kodlamaio.Hrms.entities.dtos.GetJobExperienceDto;
+import kodlamaio.Hrms.entities.dtos.JobExperienceDto;
+
+public interface JobExperienceService {
+	Result add(JobExperienceDto jobExperienceDto);
+	DataResult<List<GetJobExperienceDto>> getAllBySorted();
 }
