@@ -19,33 +19,30 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="educations")
-public class Education {
+@Table(name="job_experiences")
+public class JobExperience {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="college_started_year")
+	@Column(name="workplace_name")
 	@NotNull
 	@NotEmpty
-	private int collegeStartedYear;
+	private String workplaceName;
 	
-	@Column(name="college_graduated_year")
-	private int collegeGraduatedYear;
+	@Column(name="work_started_year")
+	@NotNull
+	@NotEmpty
+	private int workStartedYear;
 	
-	@Column(name="is_graduated")
-	private Boolean isGraduated;
+	@Column(name="work_left_year")
+	private int workLeftYear;
+	
+	@Column(name="is_working")
+	private Boolean isWorking;
 	
 	@ManyToOne()
-	@JoinColumn(name="college_id")
-	@NotNull
-	@NotEmpty
-	private College college;
-	
-	@ManyToOne()
-	@JoinColumn(name="college_department_id")
-	@NotNull
-	@NotEmpty
-	private CollegeDepartment collegeDepartment;
+	@JoinColumn(name="job_title_id")
+	private JobTitle jobTitle;
 }
