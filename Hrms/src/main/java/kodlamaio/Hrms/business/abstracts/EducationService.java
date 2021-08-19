@@ -9,6 +9,6 @@ import kodlamaio.Hrms.entities.dtos.GetEducationDto;
 
 public interface EducationService {
 	Result add(EducationDto educationDto);
-	DataResult<List<GetEducationDto>> getAll();
-	DataResult<List<GetEducationDto>> getAllBySorted();
+	DataResult<List<GetEducationDto>> getByCandidateId(int candidateId);
+	DataResult<List<GetEducationDto>> getAllSortedByCandidateId(int candidateId);
 }

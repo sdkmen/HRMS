@@ -31,13 +31,13 @@ public class EducationsController {
 		return this.educationService.add(educationDto);
 	}
 	
-	@GetMapping("/getAll")
-	public DataResult<List<GetEducationDto>> getAll() {
-		return this.educationService.getAll();
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<GetEducationDto>> getByCandidateId(int candidateId) {
+		return this.educationService.getByCandidateId(candidateId);
 	}
 	
-	@GetMapping("/getAllBySorted")
-	public DataResult<List<GetEducationDto>> getAllBySorted() {
-		return this.educationService.getAllBySorted();
+	@GetMapping("/getAllSortedByCandidateId")
+	public DataResult<List<GetEducationDto>> getAllSortedByCandidateId(int candidateId) {
+		return this.educationService.getAllSortedByCandidateId(candidateId);
 	}
 }

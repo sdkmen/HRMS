@@ -30,8 +30,8 @@ public class CoverLettersController {
 		return this.coverLetterService.add(coverLetterDto);
 	}
 	
-	@GetMapping("/getAll")
-	public DataResult<List<CoverLetterDto>> getAll() {
-		return this.coverLetterService.getAll();
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<CoverLetterDto>> getByCandidateId(int candidateId) {
+		return this.coverLetterService.getByCandidateId(candidateId);
 	}
 }

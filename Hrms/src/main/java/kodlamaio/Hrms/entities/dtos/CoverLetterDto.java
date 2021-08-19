@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CoverLetterDto {
 	private int id;
+	private int candidateId;
 	private String coverLetter;
 }

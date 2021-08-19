@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class TechnologyDto {
 	private int id;
 	private String technologyName;
+	private int candidateId;
 }

@@ -31,8 +31,13 @@ public class JobExperiencesController {
 		return this.jobExperienceService.add(jobExperienceDto);
 	}
 	
-	@GetMapping("/getAllBySorted")
-	public DataResult<List<GetJobExperienceDto>> getAllBySorted(){
-		return this.jobExperienceService.getAllBySorted();
+	@GetMapping("/getAllSortedByCandidateId")
+	public DataResult<List<GetJobExperienceDto>> getAllSortedByCandidateId(int candidateId){
+		return this.jobExperienceService.getAllSortedByCandidateId(candidateId);
+	}
+	
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<GetJobExperienceDto>> getByCandidateId(int candidateId){
+		return this.jobExperienceService.getByCandidateId(candidateId);
 	}
 }

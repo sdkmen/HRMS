@@ -14,4 +14,5 @@ public class JobExperienceDto {
 	private String workLeftYear;
 	private Boolean isWorking;
 	private int jobTitleId;
+	private int candidateId;
 }

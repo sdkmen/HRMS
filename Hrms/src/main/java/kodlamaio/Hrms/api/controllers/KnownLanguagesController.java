@@ -31,8 +31,8 @@ public class KnownLanguagesController {
 		return this.knownLanguageService.add(knownLanguageDto);
 	}
 	
-	@GetMapping("/getAll")
-	public DataResult<List<GetKnownLanguageDto>> getAll() {
-		return this.knownLanguageService.getAll();
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<GetKnownLanguageDto>> getByCandidateId(int candidateId) {
+		return this.knownLanguageService.getByCandidateId(candidateId);
 	}
 }

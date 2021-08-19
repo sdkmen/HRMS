@@ -30,8 +30,8 @@ public class SocialLinksController {
 		return this.socialLinkService.add(socialLinkDto);
 	}
 	
-	@GetMapping("/getAll")
-	public DataResult<List<SocialLinkDto>> getAll() {
-		return this.socialLinkService.getAll();
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<SocialLinkDto>> getByCandidateId(int candidateId) {
+		return this.socialLinkService.getByCandidateId(candidateId);
 	}
 }

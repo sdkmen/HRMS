@@ -30,8 +30,8 @@ public class TechnologiesController {
 		return this.technologyService.add(technologyDto);
 	}
 	
-	@GetMapping("/getAll")
-	public DataResult<List<TechnologyDto>> getAll() {
-		return this.technologyService.getAll();
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<TechnologyDto>> getByCandidateId(int candidateId) {
+		return this.technologyService.getByCandidateId(candidateId);
 	}
 }

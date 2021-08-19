@@ -37,8 +37,8 @@ public class KnownLanguageManager implements KnownLanguageService{
 	}
 
 	@Override
-	public DataResult<List<GetKnownLanguageDto>> getAll() {
-		return new SuccessDataResult<List<GetKnownLanguageDto>>(dtoConverterService.entityToDto(knownLanguageDao.findAll(), GetKnownLanguageDto.class),"Dil bilgileri listelendi");
+	public DataResult<List<GetKnownLanguageDto>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<GetKnownLanguageDto>>(dtoConverterService.entityToDto(knownLanguageDao.findAllByCandidateId(candidateId), GetKnownLanguageDto.class),"Dil bilgileri listelendi");
 	}	
 	
 	

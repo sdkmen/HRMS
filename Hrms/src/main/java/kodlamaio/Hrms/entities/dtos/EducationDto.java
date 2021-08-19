@@ -14,4 +14,5 @@ public class EducationDto {
 	private Boolean isGraduated;
 	private int collegeId;
 	private int collegeDepartmentId;
+    private int candidateId;
 }

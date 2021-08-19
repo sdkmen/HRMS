@@ -8,5 +8,5 @@ import kodlamaio.Hrms.entities.dtos.CoverLetterDto;
 
 public interface CoverLetterService {
 	Result add(CoverLetterDto coverLetterDto);
-	DataResult<List<CoverLetterDto>> getAll();
+	DataResult<List<CoverLetterDto>> getByCandidateId(int candidateId);
 }

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -23,7 +25,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="technologies")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes"})
 public class Technology {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,4 +35,8 @@ public class Technology {
 	@NotEmpty
 	@NotNull
 	private String technologyName;
+	
+	@ManyToOne()
+	@JoinColumn(name="education_id")
+	private Candidate candidate;
 }

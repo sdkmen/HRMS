@@ -36,7 +36,7 @@ public class TechnologyManager implements TechnologyService{
 	}
 
 	@Override
-	public DataResult<List<TechnologyDto>> getAll() {
-		return new SuccessDataResult<List<TechnologyDto>>(dtoConverterService.entityToDto(technologyDao.findAll(), TechnologyDto.class),"Teknolojiler listelendi");
+	public DataResult<List<TechnologyDto>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<TechnologyDto>>(dtoConverterService.entityToDto(technologyDao.findAllByCandidateId(candidateId), TechnologyDto.class),"Teknolojiler listelendi");
 	}
 }

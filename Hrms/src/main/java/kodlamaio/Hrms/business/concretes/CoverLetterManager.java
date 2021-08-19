@@ -36,7 +36,7 @@ public class CoverLetterManager implements CoverLetterService{
 	}
 
 	@Override
-	public DataResult<List<CoverLetterDto>> getAll() {
-		return new SuccessDataResult<List<CoverLetterDto>>(dtoConverterService.entityToDto(coverLetterDao.findAll(), CoverLetterDto.class),"On yazilar listelendi");
+	public DataResult<List<CoverLetterDto>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<CoverLetterDto>>(dtoConverterService.entityToDto(coverLetterDao.findAllByCandidateId(candidateId), CoverLetterDto.class),"On yazilar listelendi");
 	}	
 }

@@ -9,5 +9,5 @@ import kodlamaio.Hrms.entities.dtos.KnownLanguageDto;
 
 public interface KnownLanguageService {
 	Result add(KnownLanguageDto knownLanguageDto);
-	DataResult<List<GetKnownLanguageDto>> getAll();
+	DataResult<List<GetKnownLanguageDto>> getByCandidateId(int candidateId);
 }

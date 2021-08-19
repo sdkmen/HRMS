@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class SocialLinkDto {
 	private int id;
 	private String socialUrl;
+	private int candidateId;
 }

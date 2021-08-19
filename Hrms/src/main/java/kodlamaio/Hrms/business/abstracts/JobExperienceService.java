@@ -9,5 +9,6 @@ import kodlamaio.Hrms.entities.dtos.JobExperienceDto;
 
 public interface JobExperienceService {
 	Result add(JobExperienceDto jobExperienceDto);
-	DataResult<List<GetJobExperienceDto>> getAllBySorted();
+	DataResult<List<GetJobExperienceDto>> getByCandidateId(int candidateId);
+	DataResult<List<GetJobExperienceDto>> getAllSortedByCandidateId(int candidateId);
 }

@@ -8,5 +8,5 @@ import kodlamaio.Hrms.entities.dtos.SocialLinkDto;
 
 public interface SocialLinkService {
 	Result add(SocialLinkDto socialLinkDto);
-	DataResult<List<SocialLinkDto>> getAll();
+	DataResult<List<SocialLinkDto>> getByCandidateId(int candidateId);
 }

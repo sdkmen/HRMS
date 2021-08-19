@@ -44,8 +44,14 @@ public class JobExperienceManager implements JobExperienceService{
 	}
 
 	@Override
-	public DataResult<List<GetJobExperienceDto>> getAllBySorted() {
+	public DataResult<List<GetJobExperienceDto>> getAllSortedByCandidateId(int candidateId) {
 		Sort sort = Sort.by(Sort.Direction.DESC,"workLeftYear");
-		return new SuccessDataResult<List<GetJobExperienceDto>>(this.dtoConverterService.entityToDto(jobExperienceDao.findAll(sort), GetJobExperienceDto.class),"Is bilgileri ayrilma yilina gore tersten siralandi");
+		return new SuccessDataResult<List<GetJobExperienceDto>>(this.dtoConverterService.entityToDto(jobExperienceDao.findAllSortedByCandidateId(candidateId, sort), GetJobExperienceDto.class),"Is bilgileri ayrilma yilina gore tersten siralandi");
+	}
+
+	@Override
+	public DataResult<List<GetJobExperienceDto>> getByCandidateId(int candidateId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<GetJobExperienceDto>>(this.dtoConverterService.entityToDto(jobExperienceDao.findAllByCandidateId(candidateId), GetJobExperienceDto.class),"Is bilgileri adaya gore listelendi");
 	}
 }

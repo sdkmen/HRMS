@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class KnownLanguageDto {
 	private int id;
+	private int candidateId;
 	private int languageLevel;
 	private int languageId;
 }

@@ -1,7 +1,5 @@
 package kodlamaio.Hrms.entities.concretes;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -27,7 +24,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="known_languages")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes"})
 public class KnownLanguage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,4 +40,8 @@ public class KnownLanguage {
 	@ManyToOne()
 	@JoinColumn(name="language_id")
 	private Language language;
+	
+	@ManyToOne()
+	@JoinColumn(name="known_language_id")
+	private Candidate candidate;
 }
