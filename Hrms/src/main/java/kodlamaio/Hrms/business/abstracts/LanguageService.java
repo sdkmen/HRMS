@@ -1,5 +1,8 @@
 package kodlamaio.Hrms.business.abstracts;
 
-public interface LanguageService {
+import kodlamaio.Hrms.core.utilities.results.Result;
+import kodlamaio.Hrms.entities.dtos.LanguageDto;
 
+public interface LanguageService {
+	Result add(LanguageDto languageDto);
 }
