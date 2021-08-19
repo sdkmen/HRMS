@@ -29,10 +29,10 @@ public class Education {
 	@Column(name="college_started_year")
 	@NotNull
 	@NotEmpty
-	private int collegeStartedYear;
+	private String collegeStartedYear;
 	
 	@Column(name="college_graduated_year")
-	private int collegeGraduatedYear;
+	private String collegeGraduatedYear;
 	
 	@Column(name="is_graduated")
 	private Boolean isGraduated;

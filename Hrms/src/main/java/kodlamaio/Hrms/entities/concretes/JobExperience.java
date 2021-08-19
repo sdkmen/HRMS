@@ -34,10 +34,10 @@ public class JobExperience {
 	@Column(name="work_started_year")
 	@NotNull
 	@NotEmpty
-	private int workStartedYear;
+	private String workStartedYear;
 	
 	@Column(name="work_left_year")
-	private int workLeftYear;
+	private String workLeftYear;
 	
 	@Column(name="is_working")
 	private Boolean isWorking;

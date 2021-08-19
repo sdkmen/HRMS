@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EducationDto {
+public class GetEducationDto {
 	private int id;
 	private String collegeStartedYear;
 	private String collegeGraduatedYear;
 	private Boolean isGraduated;
-	private int collegeId;
-	private int collegeDepartmentId;
+	private String collegeName;
+	private String collegeDepartmentName;
 }

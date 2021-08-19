@@ -1,5 +1,8 @@
 package kodlamaio.Hrms.business.abstracts;
 
-public interface CollegeService {
+import kodlamaio.Hrms.core.utilities.results.Result;
+import kodlamaio.Hrms.entities.dtos.CollegeDto;
 
+public interface CollegeService {
+	Result add(CollegeDto collegeDto);
 }

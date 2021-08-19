@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class JobExperienceDto {
 	private int id;
 	private String workplaceName;
-	private int workStartedYear;
-	private int workLeftYear;
+	private String workStartedYear;
+	private String workLeftYear;
 	private Boolean isWorking;
 	private String jobTitle;
 }
