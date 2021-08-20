@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import kodlamaio.Hrms.entities.concretes.Picture;
 
 public interface PictureDao extends JpaRepository<Picture, Integer>{
-	Picture getByCandidate_Id(int candidateId);
+	Picture getByCandidateId(int candidateId);
 }

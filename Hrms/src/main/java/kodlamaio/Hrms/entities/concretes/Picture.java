@@ -33,6 +33,9 @@ public class Picture {
 	@NotNull
 	private String pictureUrl;
 	
+	@Column(name="public_id")
+	private String publicId;
+	
 	@JsonIgnore
 	@OneToOne()
 	@JoinColumn(name="candidate_id",referencedColumnName = "id")

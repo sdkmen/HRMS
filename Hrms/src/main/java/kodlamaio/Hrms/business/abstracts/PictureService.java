@@ -1,5 +1,6 @@
 package kodlamaio.Hrms.business.abstracts;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +11,6 @@ import kodlamaio.Hrms.entities.concretes.Picture;
 
 public interface PictureService {
 	Result add(MultipartFile multipartFile, int candidateId);
-	Result delete(int id);
+	Result delete(int id) throws IOException;
 	DataResult<Picture> getById(int candidateId);
 }

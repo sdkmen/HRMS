@@ -1,5 +1,6 @@
 package kodlamaio.Hrms.api.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class PicturesController {
 	}
 	
 	@GetMapping("/delete")
-	public Result delete(int id) {
+	public Result delete(int id) throws IOException {
 		return this.pictureService.delete(id);
 	}
 }

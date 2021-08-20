@@ -1,5 +1,7 @@
 package kodlamaio.Hrms.business.concretes;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,19 +41,21 @@ public class PictureManager implements PictureService{
 		Picture picture = new Picture();
 		picture.setCandidate(candidate);
 		picture.setPictureUrl(result.getData().get("url"));
+		picture.setPublicId(result.getData().get("public_id"));
 		this.pictureDao.save(picture);
 		return new SuccessResult("Fotograf eklendi");
 	}
 
 	@Override
 	public DataResult<Picture> getById(int candidateId) {
-		return new SuccessDataResult<Picture>(this.pictureDao.getById(candidateId));
+		return new SuccessDataResult<Picture>(this.pictureDao.getByCandidateId(candidateId));
 	}
 
 	@Override
-	public Result delete(int id) {
-		var picture = pictureDao.getById(id);
-        this.pictureDao.delete(picture);
+	public Result delete(int id) throws IOException {
+		var publicId = this.pictureDao.findById(id).get().getPublicId();
+		var result = this.cloudService.delete(publicId);
+		this.pictureDao.deleteById(id);
         return new SuccessResult("Fotograf silindi");
 	}
 }
