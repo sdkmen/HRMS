@@ -5,12 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.Transient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,21 +21,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="users")
-public class User {
-	
+@Table(name="pictures")
+public class Picture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="email")
-	private String email;
+	@Column(name="picture_url")
+	@NotEmpty
+	@NotNull
+	private String pictureUrl;
 	
-	@Column(name="password")
-	private String password;
+	@Column(name="public_id")
+	private String publicId;
 	
-	@Transient
-	private String passwordAgain;
+	@JsonIgnore
+	@OneToOne()
+	@JoinColumn(name="candidate_id",referencedColumnName = "id")
+	private Candidate candidate;
 }

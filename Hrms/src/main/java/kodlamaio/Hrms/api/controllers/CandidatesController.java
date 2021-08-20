@@ -34,4 +34,9 @@ public class CandidatesController {
 	public Result add(@RequestBody Candidate candidate) {
 		return this.candidateService.add(candidate);
 	}
+	
+	@GetMapping("/getById")
+	public DataResult<Candidate> getById(int candidateId) {
+		return this.candidateService.getById(candidateId);
+	}
 }
