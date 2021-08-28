@@ -12,4 +12,5 @@ public interface JobAdvertService {
 	List<JobAdvertDto> getByIsActive();
 	List<JobAdvertDto> getAllActiveSortedByDate();
 	List<JobAdvertDto> getByIsActiveOrderByEmployer(int employerId);
+	List<JobAdvertDto> getById(int id);
 }

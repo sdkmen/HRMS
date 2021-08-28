@@ -14,6 +14,10 @@ public class JobAdvertDto {
 	private String companyName;
 	private String jobTitle;
 	private int freePositionNo;
+	private int minSalary;
+	private int maxSalary;
+	private String cityName;
+	private String jobDefinition;
 	private Date creationDate;
 	private Date deadline;
 }

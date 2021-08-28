@@ -61,4 +61,9 @@ public class JobAdvertManager implements JobAdvertService{
 		this.jobAdvertDao.save(jobAdvertisementId);
 		return new SuccessResult("Is ilani pasif yapildi.");
 	}
+
+	@Override
+	public List<JobAdvertDto> getById(int id) {
+		return dtoConverterService.entityToDto(jobAdvertDao.getByIdentityNumber(id), JobAdvertDto.class);
+	}
 }
