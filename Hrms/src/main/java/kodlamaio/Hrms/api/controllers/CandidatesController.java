@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,8 +45,8 @@ public class CandidatesController {
 		return this.candidateService.getById(candidateId);
 	}
 	
-	@GetMapping("/getByCandidateId")
-	public List<GetCandidateDto> findByCandidateId(int id) {
+	@GetMapping("/getByCandidateId/{id}")
+	public List<GetCandidateDto> findByCandidateId(@PathVariable int id) {
 		return this.candidateService.findByCandidateId(id);
 	}
 }

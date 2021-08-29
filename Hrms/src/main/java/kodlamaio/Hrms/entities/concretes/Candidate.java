@@ -1,5 +1,6 @@
 package kodlamaio.Hrms.entities.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -33,6 +34,6 @@ public class Candidate extends User{
 	@Column(name="birth_year")
 	private int birthOfYear;
 
-	@OneToOne(mappedBy = "candidate")
+	@OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
 	private Picture picture;
 }

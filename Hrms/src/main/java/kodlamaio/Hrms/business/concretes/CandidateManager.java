@@ -70,7 +70,7 @@ public class CandidateManager implements CandidateService{
 
 	@Override
 	public DataResult<Candidate> getById(int candidateId) {
-		return new SuccessDataResult<Candidate>(this.candidateDao.getById(candidateId), "Aday listelendi");
+		return new SuccessDataResult<Candidate>(candidateDao.findById(candidateId).get(), "Data getirildi");
 	}
 
 	@Override
