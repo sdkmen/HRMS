@@ -14,6 +14,8 @@ import kodlamaio.Hrms.business.abstracts.CandidateService;
 import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.entities.concretes.Candidate;
+import kodlamaio.Hrms.entities.dtos.CandidateDto;
+import kodlamaio.Hrms.entities.dtos.GetCandidateDto;
 
 @RestController
 @RequestMapping("/api/candidates")
@@ -28,17 +30,22 @@ public class CandidatesController {
 	}
 	
 	@GetMapping("/getCandidates")
-	public DataResult<List<Candidate>> getAll(){
+	public DataResult<List<GetCandidateDto>> getAll(){
 		return this.candidateService.getAll();
 	}
 	
 	@PostMapping("/addCandidate")
-	public Result add(@RequestBody Candidate candidate) {
-		return this.candidateService.add(candidate);
+	public Result add(@RequestBody CandidateDto candidateDto) {
+		return this.candidateService.add(candidateDto);
 	}
 	
 	@GetMapping("/getById")
 	public DataResult<Candidate> getById(int candidateId) {
 		return this.candidateService.getById(candidateId);
+	}
+	
+	@GetMapping("/getByCandidateId")
+	public List<GetCandidateDto> findByCandidateId(int id) {
+		return this.candidateService.findByCandidateId(id);
 	}
 }

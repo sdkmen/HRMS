@@ -45,7 +45,7 @@ public class JobAdvertManager implements JobAdvertService{
 
 	@Override
 	public List<JobAdvertDto> getAllActiveSortedByDate() {
-		Sort sort = Sort.by(Sort.Direction.ASC,"creationDate");
+		Sort sort = Sort.by(Sort.Direction.DESC,"creationDate");
 		return dtoConverterService.entityToDto(jobAdvertDao.getAllActiveSortedByDate(sort), JobAdvertDto.class);
 	}
 
