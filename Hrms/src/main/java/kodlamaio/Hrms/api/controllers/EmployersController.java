@@ -14,6 +14,7 @@ import kodlamaio.Hrms.business.abstracts.EmployerService;
 import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.entities.concretes.Employer;
+import kodlamaio.Hrms.entities.dtos.EmployerDto;
 
 @RestController
 @RequestMapping("/api/employers")
@@ -31,7 +32,7 @@ public class EmployersController {
 	}
 	
 	@GetMapping("/getEmployers")
-	public DataResult<List<Employer>> getAll(){
+	public DataResult<List<EmployerDto>> getAll(){
 		return this.employerService.getAll();
 	}
 	
