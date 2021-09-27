@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
+import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.entities.dtos.JobAdvertAddDto;
 import kodlamaio.Hrms.entities.dtos.JobAdvertDto;
@@ -57,5 +58,20 @@ public class JobAdvertsController {
 	@GetMapping("/getById/{id}")
 	public List<JobAdvertDto> getById(@PathVariable int id) {
 		return this.jobAdvertService.getById(id);
+	}
+	
+	@PostMapping("/setIsConfirmed")
+	public Result setIsConfirmed(int id) {
+		return this.jobAdvertService.setIsConfirmed(id);
+	}
+	
+	@GetMapping("/getByNotConfirmed")
+	public DataResult<List<JobAdvertDto>> getByNotConfirmed() {
+		return this.jobAdvertService.getByNotConfirmed();
+	}
+	
+	@GetMapping("/getByIsActiveAndIsConfirmed")
+	public DataResult<List<JobAdvertDto>> getByIsActiveAndIsConfirmed() {
+		return this.jobAdvertService.getByIsActiveAndIsConfirmed();
 	}
 }

@@ -24,6 +24,7 @@ public class DtoConverterManager implements DtoConverterService{
 	@Override
 	public <S, T> List<T> entityToDto(List<S> listTypeEntityClass, Class<T> targetDtoClass) {
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		modelMapper.getConfiguration().setAmbiguityIgnored(true);
 		return listTypeEntityClass.stream().map(element -> modelMapper.map(element, targetDtoClass))
 				.collect(Collectors.toList());
 	}

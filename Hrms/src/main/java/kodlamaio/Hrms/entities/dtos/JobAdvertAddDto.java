@@ -14,6 +14,7 @@ public class JobAdvertAddDto {
 	private int id;
 	private int employerId;
 	private int jobTitleId;
+	private int workHourId;
 	private int cityId;
 	private String jobDefinition;
 	private double minSalary;
@@ -22,4 +23,5 @@ public class JobAdvertAddDto {
 	private LocalDate creationDate;
 	private Date deadline;
 	private Boolean isActive;
+	private Boolean isRemote;
 }

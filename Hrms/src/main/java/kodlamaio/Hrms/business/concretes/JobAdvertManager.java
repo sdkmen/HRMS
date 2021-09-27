@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.Hrms.business.abstracts.JobAdvertService;
 import kodlamaio.Hrms.core.utilities.dtoConverter.abstracts.DtoConverterService;
+import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
+import kodlamaio.Hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.Hrms.core.utilities.results.SuccessResult;
 import kodlamaio.Hrms.dataAccess.abstracts.JobAdvertDao;
 import kodlamaio.Hrms.entities.concretes.JobAdvert;
@@ -65,5 +67,24 @@ public class JobAdvertManager implements JobAdvertService{
 	@Override
 	public List<JobAdvertDto> getById(int id) {
 		return dtoConverterService.entityToDto(jobAdvertDao.getByIdentityNumber(id), JobAdvertDto.class);
+	}
+
+	@Override
+	public Result setIsConfirmed(int id) {
+		JobAdvert jobAdvertisementId = this.jobAdvertDao.getById(id);
+		jobAdvertisementId.setIsConfirmed(true);
+		this.jobAdvertDao.save(jobAdvertisementId);
+		return new SuccessResult("Is ilani onaylandi.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvertDto>> getByNotConfirmed() {
+		return new SuccessDataResult<List<JobAdvertDto>>(this.dtoConverterService.entityToDto(jobAdvertDao.getByNotConfirmed(), JobAdvertDto.class), "Data listelendi");
+	}
+
+	@Override
+	public DataResult<List<JobAdvertDto>> getByIsActiveAndIsConfirmed() {
+		Sort sort = Sort.by(Sort.Direction.DESC,"creationDate");
+		return new SuccessDataResult<List<JobAdvertDto>>(this.dtoConverterService.entityToDto(jobAdvertDao.getByIsActiveAndIsConfirmed(sort), JobAdvertDto.class), "Data listelendi");
 	}
 }

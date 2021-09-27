@@ -18,6 +18,12 @@ public interface JobAdvertDao extends JpaRepository<JobAdvert, Integer>{
 	@Query("FROM JobAdvert where is_active = true and employer.id=:employerId")
 	List<JobAdvert> getByIsActiveOrderByEmployer(int employerId);
 	
+	@Query("FROM JobAdvert where is_active = true and is_confirmed = false")
+	List<JobAdvert> getByNotConfirmed();
+	
+	@Query("FROM JobAdvert where is_active = true and is_confirmed = true")
+	List<JobAdvert> getByIsActiveAndIsConfirmed(Sort sort);
+	
 	@Query("FROM JobAdvert where id=:id")
 	List<JobAdvert> getByIdentityNumber(int id);
 }

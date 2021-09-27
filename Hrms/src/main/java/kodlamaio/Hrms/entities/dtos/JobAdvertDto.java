@@ -20,4 +20,6 @@ public class JobAdvertDto {
 	private String jobDefinition;
 	private Date creationDate;
 	private Date deadline;
+	private Boolean isRemote;
+	private String hourType;
 }

@@ -48,6 +48,12 @@ public class JobAdvert {
 	@Column(name="is_active")
 	private Boolean isActive;
 	
+	@Column(name="is_remote")
+	private Boolean isRemote;
+	
+	@Column(name="is_confirmed")
+	private Boolean isConfirmed = false;
+	
 	@Column(name="creation_date")
 	@JsonIgnore
 	private LocalDate creationDate;
@@ -60,6 +66,10 @@ public class JobAdvert {
 	@ManyToOne()
 	@JoinColumn(name="city_id")
 	private City city;
+	
+	@ManyToOne()
+	@JoinColumn(name="work_hour_id")
+	private WorkHour workHour;
 	
 	@ManyToOne()
 	@JoinColumn(name="employer_id")
